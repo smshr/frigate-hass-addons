@@ -13,7 +13,8 @@ RUN apt-get -qq update \
     build-essential cmake git pkg-config \
     curl unzip \
     swig libjpeg-dev zlib1g-dev \
-    libusb-1.0-0-dev xxd
+    libusb-1.0-0-dev xxd \
+    gnupg
 
 FROM base as build_libedgetpu
 RUN git clone https://github.com/google-coral/libedgetpu.git
