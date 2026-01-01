@@ -18,7 +18,7 @@ RUN apt-get -qq update \
 FROM base as build_libedgetpu
 RUN git clone https://github.com/google-coral/libedgetpu.git
 RUN cd libedgetpu && git checkout release-grouper
-RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor -o /usr/share/keyrings/bazel-archive-keyring.gpg
+RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor -o /usr/share/keyrings/bazel-archive-keyring.gpg \
     && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" > /etc/apt/sources.list.d/bazel.list \
     && apt-get -qq update \
     && apt-get -qq install bazel=7.4.1
