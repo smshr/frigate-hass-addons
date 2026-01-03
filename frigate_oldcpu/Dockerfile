@@ -11,7 +11,7 @@ RUN apt-get -qq update \
     build-essential cmake git pkg-config \
     curl unzip \
     swig libjpeg-dev zlib1g-dev \
-    libusb-1.0-0-dev xxd \
+    libusb-1.0-0-dev xxd
 
 RUN python3 -m venv myenv && source myenv/bin/activate && pip install numpy pybind11
 
