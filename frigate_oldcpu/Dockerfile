@@ -8,6 +8,7 @@ RUN apt-get -qq update \
     python3 \
     python3-dev \
     python3-pip \
+    python3.11-venv \
     build-essential cmake git pkg-config \
     curl unzip \
     swig libjpeg-dev zlib1g-dev \
