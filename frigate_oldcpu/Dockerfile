@@ -8,7 +8,8 @@ RUN apt-get -qq update && \
     python3-pip \
     python3-numpy \
     python3-pybind11 \
-    swig libjpeg-dev zlib1g-dev git 
+    build-essential cmake git pkg-config \
+    swig libjpeg-dev zlib1g-dev
 
 FROM base as build_tflite
 RUN git clone --depth 1 --branch v2.20.0 https://github.com/tensorflow/tensorflow.git && \
