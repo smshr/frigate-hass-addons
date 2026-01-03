@@ -1,8 +1,8 @@
 
 FROM debian:12 as base
 ENV DEBIAN_FRONTEND=noninteractive
-ENV VIRTUAL_ENV=/opt/frigate
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV VIRTUAL_ENV=frigate
+ENV PATH="/opt/$VIRTUAL_ENV/bin:$PATH"
 # tflite dependencies, see https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/pip_package
 # libedgetpu dependencies, see https://github.com/google-coral/libedgetpu/blob/master/docker/Dockerfile
 RUN apt-get -qq update \
@@ -16,7 +16,7 @@ RUN apt-get -qq update \
     swig libjpeg-dev zlib1g-dev \
     libusb-1.0-0-dev xxd
 
-RUN python3 -m venv myenv && pip install numpy pybind11
+RUN python3 -m venv "VIRTUAL_ENV" && pip install numpy pybind11
 
 FROM base as build_libedgetpu
 RUN git clone https://github.com/google-coral/libedgetpu.git
