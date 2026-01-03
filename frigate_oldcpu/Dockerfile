@@ -12,7 +12,7 @@ RUN apt-get -qq update && \
 
 FROM base as build_tflite
 RUN git clone --depth 1 --branch v2.20.0 https://github.com/tensorflow/tensorflow.git && \
-    bash tensorflow/tensorflow/lite/tools/make/download_dependencies.sh && \
+    bash tensorflow/tensorflow/lite/tools/cmake/download_toolchains.sh && \
     env BUILD_NUM_JOBS=$(($(grep -c "^processor" /proc/cpuinfo) / 2)) bash tensorflow/tensorflow/lite/tools/pip_package/build_pip_package_with_cmake.sh
 # RUN ls -ltra /tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist
 
