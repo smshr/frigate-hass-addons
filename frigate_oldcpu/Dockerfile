@@ -9,7 +9,7 @@ RUN apt-get -qq update \
     python3-pip \
     python3-numpy \
     python3-pybind11 \
-    swig libjpeg-dev zlib1g-dev
+    swig libjpeg-dev zlib1g-dev git 
 
 FROM base as build_tflite
 RUN git clone https://github.com/tensorflow/tensorflow.git
