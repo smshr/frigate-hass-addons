@@ -14,7 +14,7 @@ RUN apt-get -qq update \
     swig libjpeg-dev zlib1g-dev \
     libusb-1.0-0-dev xxd
 
-RUN pip install --system --no-cache-dir numpy pybind11
+RUN pip install --no-cache-dir --break-system-packages numpy pybind11
 
 FROM base as build_libedgetpu
 RUN git clone https://github.com/google-coral/libedgetpu.git
