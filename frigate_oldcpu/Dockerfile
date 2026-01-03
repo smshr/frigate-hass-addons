@@ -14,8 +14,8 @@ RUN apt-get -qq update && \
 FROM base as build_tflite
 RUN git clone https://github.com/tensorflow/tensorflow.git && \
     cd tensorflow && git checkout v2.20.0 && \
-    bash tensorflow/tensorflow/lite/tools/make/download_dependencies.sh && \
-    env BUILD_NUM_JOBS=$(($(grep -c "^processor" /proc/cpuinfo) / 2)) bash tensorflow/tensorflow/lite/tools/pip_package/build_pip_package_with_cmake.sh
+    bash tensorflow/lite/tools/make/download_dependencies.sh && \
+    env BUILD_NUM_JOBS=$(($(grep -c "^processor" /proc/cpuinfo) / 2)) bash tensorflow/lite/tools/pip_package/build_pip_package_with_cmake.sh
 # RUN ls -ltra /tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist
 
 FROM ghcr.io/blakeblackshear/frigate:0.17.0-beta1
