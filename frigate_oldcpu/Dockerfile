@@ -1,4 +1,4 @@
-FROM debian:12 as base
+FROM debian:12 as build_tflite
 ENV DEBIAN_FRONTEND=noninteractive
 # tflite dependencies, see https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/pip_package
 RUN apt-get -qq update && \
@@ -8,13 +8,9 @@ RUN apt-get -qq update && \
     python3.11-numpy \
     python3.11-setuptools \
     python3-pybind11 \
-    build-essential cmake git pkg-config \
-    swig libjpeg-dev zlib1g-dev
-
-FROM base as build_tflite
+    build-essential cmake git
 RUN git clone --depth 1 --branch v2.17.1 https://github.com/tensorflow/tensorflow.git && \
     env BUILD_NUM_JOBS=$(($(grep -c "^processor" /proc/cpuinfo) / 2)) bash tensorflow/tensorflow/lite/tools/pip_package/build_pip_package_with_cmake.sh
-# RUN ls -ltra /tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist
 
 FROM ghcr.io/blakeblackshear/frigate:0.17.0-beta1
 COPY --from=build_tflite /tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-2.17.1-cp311-cp311-linux_x86_64.whl /wheels/
