@@ -6,6 +6,7 @@ RUN apt-get -qq update && \
     python3.11 \
     python3.11-dev \
     python3.11-numpy \
+    python3.11-setuptools \
     python3-pybind11 \
     build-essential cmake git pkg-config \
     swig libjpeg-dev zlib1g-dev
