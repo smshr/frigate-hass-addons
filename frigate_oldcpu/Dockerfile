@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qq update && \
     apt-get -qq install -y \
     python3.11 \
-    python3.11-dev \
+    python3-dev \
     python3-numpy \
     python3-setuptools \
     python3-pybind11 \
