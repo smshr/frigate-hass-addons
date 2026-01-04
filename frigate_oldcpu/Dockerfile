@@ -5,8 +5,8 @@ RUN apt-get -qq update && \
     apt-get -qq install -y \
     python3.11 \
     python3.11-dev \
-    python3.11-numpy \
-    python3.11-setuptools \
+    python3-numpy \
+    python3-setuptools \
     python3-pybind11 \
     build-essential cmake git
 RUN git clone --depth 1 --branch v2.17.1 https://github.com/tensorflow/tensorflow.git && \
