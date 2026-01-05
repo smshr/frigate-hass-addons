@@ -8,7 +8,7 @@ RUN apt-get -qq update && \
     python3-pip \
     build-essential cmake git pkg-config \
     swig libjpeg-dev zlib1g-dev
-RUN pip install --system --no-cache-dir numpy pybind11
+RUN pip install --no-cache-dir --break-system-packages numpy pybind11
 
 FROM base as build_tflite
 RUN git clone --depth 1 --branch v2.17.1 https://github.com/tensorflow/tensorflow.git && \
