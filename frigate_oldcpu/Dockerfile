@@ -5,11 +5,10 @@ RUN apt-get -qq update && \
     apt-get -qq install -y \
     python3.11 \
     python3-dev \
-    python3-numpy \
-    python3-setuptools \
-    python3-pybind11 \
+    python3-pip \
     build-essential cmake git pkg-config \
     swig libjpeg-dev zlib1g-dev
+RUN pip install --system --no-cache-dir numpy pybind11
 
 FROM base as build_tflite
 RUN git clone --depth 1 --branch v2.17.1 https://github.com/tensorflow/tensorflow.git && \
