@@ -16,4 +16,4 @@ RUN git clone --depth 1 --branch v2.17.1 https://github.com/tensorflow/tensorflo
 
 FROM ghcr.io/blakeblackshear/frigate:0.17.0-beta1
 COPY --from=build_tflite /tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-2.17.1-cp311-cp311-linux_x86_64.whl /wheels/
-RUN pip3 install --upgrade /wheels/tflite_runtime-2.17.1-cp311-cp311-linux_x86_64.whl
+RUN pip3 install --upgrade --no-cache-dir --break-system-packages /wheels/tflite_runtime-2.17.1-cp311-cp311-linux_x86_64.whl
